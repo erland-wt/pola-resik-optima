@@ -1,0 +1,86 @@
+.navLink {
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #1d4ed8;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease 0.15s;
+}
+
+.navLink:hover::after {
+  transform: scaleX(1);
+  transition-delay: 0s;
+}
+
+/* Hamburger icon */
+.hamburger {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.hamburgerOpen {
+  transform: rotate(180deg);
+}
+
+.hamburgerLine {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #1e3a8a; /* tailwind blue-900 */
+  margin-bottom: 4px;
+  border-radius: 9999px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburgerLine:last-child {
+  margin-bottom: 0;
+}
+
+/* Ketika open → jadi ikon X */
+.hamburgerOpen .hamburgerLine:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburgerOpen .hamburgerLine:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerOpen .hamburgerLine:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Animasi slide drawer */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.mobileDrawerEnter {
+  animation: slideInFromRight 0.3s ease-out forwards;
+}
+
+.mobileDrawerExit {
+  animation: slideOutToRight 0.3s ease-out forwards;
+}

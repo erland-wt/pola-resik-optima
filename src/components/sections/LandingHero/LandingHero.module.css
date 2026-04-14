@@ -1,0 +1,38 @@
+@keyframes hero-rise {
+  0% {
+    transform: translateY(150vh);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.heroTextWrapper {
+  overflow: hidden;
+}
+
+/* dasar animasi */
+.heroTextAnimate {
+  transform: translateY(150vh);
+  opacity: 0;
+  animation-name: hero-rise;
+  animation-duration: 2.2s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+/* variasi delay */
+.heroDelay1 {
+  animation-delay: 0.1s;
+}
+
+.heroDelay2 {
+  animation-delay: 0.8s;
+}
+
+.heroDelay3 {
+  animation-delay: 1s;
+}
+
