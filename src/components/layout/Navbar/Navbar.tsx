@@ -68,7 +68,7 @@ const Navbar = () => {
               className="w-7.5 md:w-auto md:h-auto object-contain"
               loading="eager"
             />
-            <p className="font-bold text-[8px] md:text-[14px] uppercase tracking-widest">
+            <p className="font-bold text-[10px] md:text-[14px] uppercase tracking-widest">
               Pola Resik Optima
             </p>
           </div>
