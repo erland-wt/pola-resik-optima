@@ -1,11 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, type TouchEvent } from "react";
 import cardsLingkup from "./MenuRuangLingkup";
+
+const SWIPE_THRESHOLD = 50;
 
 const RuangLingkup = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
 
   const prev = () => {
     setActiveIndex((current) =>
@@ -19,15 +23,46 @@ const RuangLingkup = () => {
     );
   };
 
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(event.touches[0].clientX);
+    setTouchEndX(null);
+  };
+
+  const handleTouchMove = (event: TouchEvent<HTMLDivElement>) => {
+    setTouchEndX(event.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX === null || touchEndX === null) return;
+
+    const distance = touchStartX - touchEndX;
+
+    if (Math.abs(distance) > SWIPE_THRESHOLD) {
+      if (distance > 0) {
+        next();
+      } else {
+        prev();
+      }
+    }
+
+    setTouchStartX(null);
+    setTouchEndX(null);
+  };
+
   return (
     <section className="pt-16 sm:pt-20 md:pt-24 pb-12 md:pb-16">
       <h3 className="text-center uppercase text-xl sm:text-2xl md:text-3xl font-semibold text-[#3057B6] tracking-widest mb-6 md:mb-8">
         Ruang Lingkup Layanan
       </h3>
 
-      <div className="relative w-11/12 max-w-5xl mx-auto">
-        {/* Area slide */}
-        <div className="overflow-hidden rounded-xl shadow-md bg-white">
+      <div className="w-11/12 max-w-5xl mx-auto">
+        {/* Area slide (card) */}
+        <div
+          className="relative overflow-hidden rounded-xl shadow-md bg-white"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div
             className="flex transition-transform duration-500 ease-out"
             style={{ transform: `translateX(-${activeIndex * 100}%)` }}
@@ -58,39 +93,41 @@ const RuangLingkup = () => {
           </div>
         </div>
 
-        {/* Tombol panah */}
-        <button
-          type="button"
-          onClick={prev}
-          className="absolute top-1/2 left-3 -translate-y-1/2 h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 rounded-full bg-white/85 text-[#3057B6] shadow-md flex items-center justify-center hover:bg-[#3057B6] hover:text-white transition text-xl sm:text-2xl font-extrabold"
-          aria-label="Sebelumnya"
-        >
-          ‹
-        </button>
-        <button
-          type="button"
-          onClick={next}
-          className="absolute top-1/2 right-3 -translate-y-1/2 h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 rounded-full bg-white/85 text-[#3057B6] shadow-md flex items-center justify-center hover:bg-[#3057B6] hover:text-white transition text-xl sm:text-2xl font-extrabold"
-          aria-label="Berikutnya"
-        >
-          ›
-        </button>
+        {/* Kontrol: panah di luar card + indikator dot di tengah */}
+        <div className="mt-5 flex items-center justify-between">
+          <button
+            type="button"
+            onClick={prev}
+            className="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 rounded-full bg-white/90 text-[#3057B6] shadow-md flex items-center justify-center hover:bg-[#3057B6] hover:text-white transition text-xl sm:text-2xl font-extrabold"
+            aria-label="Sebelumnya"
+          >
+            ‹
+          </button>
 
-        {/* Indicator dot */}
-        <div className="flex justify-center gap-2 mt-5">
-          {cardsLingkup.map((_, index) => (
-            <button
-              key={index}
-              type="button"
-              onClick={() => setActiveIndex(index)}
-              className={`h-2.5 w-2.5 rounded-full transition ${
-                index === activeIndex
-                  ? "bg-[#3057B6]"
-                  : "bg-gray-300 hover:bg-gray-400"
-              }`}
-              aria-label={`Slide ${index + 1}`}
-            />
-          ))}
+          <div className="flex justify-center gap-2">
+            {cardsLingkup.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                onClick={() => setActiveIndex(index)}
+                className={`h-2.5 w-2.5 rounded-full transition ${
+                  index === activeIndex
+                    ? "bg-[#3057B6]"
+                    : "bg-gray-300 hover:bg-gray-400"
+                }`}
+                aria-label={`Slide ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={next}
+            className="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 rounded-full bg-white/90 text-[#3057B6] shadow-md flex items-center justify-center hover:bg-[#3057B6] hover:text-white transition text-xl sm:text-2xl font-extrabold"
+            aria-label="Berikutnya"
+          >
+            ›
+          </button>
         </div>
       </div>
     </section>

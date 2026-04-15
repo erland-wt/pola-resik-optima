@@ -11,13 +11,14 @@
   transform: translateY(0);
 }
 
-/* opsional: kartu per item sedikit stagger */
 .card {
   opacity: 0;
   transform: translateY(30px);
   transition:
     opacity 0.6s ease-out,
-    transform 0.6s ease-out;
+    transform 0.1s ease-out,
+    box-shadow 0.3s ease-out;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .cardVisible {
@@ -25,7 +26,11 @@
   transform: translateY(0);
 }
 
-/* delay bertahap (bisa dipakai pakai index) */
+.card:hover {
+  transform: translateY(-20px);
+  box-shadow: 0 0 15px rgba(48, 87, 182, 0.5);
+}
+
 .delay0 {
   transition-delay: 0.05s;
 }

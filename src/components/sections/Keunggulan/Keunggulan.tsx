@@ -51,7 +51,7 @@ const Keunggulan = () => {
             key={index}
             className={
               styles.card +
-              " bg-white rounded-md inset-shadow-[0_0_10px_rgba(0,0,0,0.1)] " +
+              " bg-white rounded-md " + 
               "w-full p-6 sm:p-8 md:p-10 " +
               (inView ? " " + styles.cardVisible + " " + styles["delay" + index] : "")
             }

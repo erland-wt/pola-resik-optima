@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/Button";
 import style from "./Navbar.module.css";
 import NAV_LINKS from "./navLinks";
 
+const WHATSAPP_NUMBER = "6281281700875";
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuAnimation, setMenuAnimation] = useState<"enter" | "exit" | null>(
@@ -31,6 +33,14 @@ const Navbar = () => {
   };
 
   const isDrawerVisible = isMenuOpen || menuAnimation === "exit";
+
+  const openWhatsApp = () => {
+    const message = encodeURIComponent(
+      "Halo, saya ingin bertanya mengenai layanan Pola Resik Optima."
+    );
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+    window.open(url, "_blank");
+  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -83,6 +93,7 @@ const Navbar = () => {
         <div className="hidden md:block">
           <Button
             label="Hubungi Kami"
+            onClick={openWhatsApp}
             className="bg-[#3057B6] py-2 px-4 rounded cursor-pointer shadow-lg text-white hover:bg-[#25489E] transition duration-300"
           />
         </div>

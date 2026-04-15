@@ -1,5 +1,23 @@
+"use client";
+
 import { Button } from "@/components/ui/Button";
 import style from "@/components/sections/LandingHero/LandingHero.module.css";
+
+const WHATSAPP_NUMBER = "6281281700875";
+
+const scrollToSection = (id: string) => {
+  const element = document.getElementById(id);
+  if (!element) return;
+  element.scrollIntoView({ behavior: "smooth" });
+};
+
+const openWhatsApp = () => {
+  const message = encodeURIComponent(
+    "Halo, saya ingin konsultasi mengenai layanan kebersihan Pola Resik Optima."
+  );
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+  window.open(url, "_blank");
+};
 
 const LandingHero = () => {
   return (
@@ -21,7 +39,7 @@ const LandingHero = () => {
             " uppercase font-bold " +
             "text-[18px] xs:text-[20px] sm:text-[28px] md:text-[40px] " +
             "leading-snug md:leading-tight " +
-            "tracking-wide md:tracking-wider"
+            "tracking-wide md:tracking-wider text-white"
           }
         >
           Menghadirkan{" "}
@@ -42,7 +60,7 @@ const LandingHero = () => {
             style.heroDelay2 +
             " mt-4 md:mt-6 " +
             "text-[11px] xs:text-[12px] sm:text-[13px] md:text-sm  " +
-            "w-full sm:w-4/5 md:w-3/4 mx-auto"
+            "w-full sm:w-4/5 md:w-3/4 mx-auto text-white"
           }
         >
           <i>
@@ -67,10 +85,12 @@ const LandingHero = () => {
           <Button
             label="Lihat Layanan Kami"
             className="btn-cta btn-cta-loop xs:w-auto"
+            onClick={() => scrollToSection("Layanan")}
           />
           <Button
             label="Konsultasi Sekarang"
             className="btn-outline xs:w-auto"
+            onClick={openWhatsApp}
           />
         </div>
       </div>
