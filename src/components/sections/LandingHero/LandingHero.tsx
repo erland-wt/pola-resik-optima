@@ -77,7 +77,7 @@ const LandingHero = () => {
             " " +
             style.heroDelay3 +
             " mt-6 md:mt-10 tracking-wider " +
-            "flex flex-col md:flex-row items-stretch xs:items-center " +
+            "flex flex-col md:flex-row items-stretch xs:items-center text-[20px] " +
             "justify-center md:justify-around gap-3 sm:gap-4 " +
             "w-full md:max-w-4xl mx-auto"
           }
