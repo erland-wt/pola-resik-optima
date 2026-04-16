@@ -27,7 +27,7 @@ const LandingHero = () => {
         min-h-[80vh] md:min-h-screen 
         pt-10 pb-16 lg:pt-20 md:pb-30 
         w-11/12 sm:w-5/6 mx-auto 
-        text-center antialiased overflow-hidden
+        text-center antialiased overflow-hidden text-white
       "
     >
       <div className={style.heroTextWrapper + " w-full max-w-5xl mx-auto"}>
@@ -37,20 +37,12 @@ const LandingHero = () => {
             " " +
             style.heroDelay1 +
             " uppercase font-bold " +
-            "text-[18px] xs:text-[20px] sm:text-[28px] md:text-[40px] " +
+            "text-[18px] xs:text-[20px] sm:text-[28px] md:text-[45px] " +
             "leading-snug md:leading-tight " +
-            "tracking-wide md:tracking-wider text-white"
+            "tracking-wide md:tracking-wider"
           }
         >
-          Menghadirkan{" "}
-          <span className="text-[#B6F500]">
-            <i>Kemurnian</i>
-          </span>{" "}
-          dan
-          <span className="text-[#B6F500]">
-            <i> Kenyamanan</i>
-          </span>{" "}
-          di Setiap Sudut Ruang Anda
+          Jasa cleaning service, outsourcing Cleaning Service, Landscape dan Pest control
         </h1>
 
         <h3
@@ -64,10 +56,7 @@ const LandingHero = () => {
           }
         >
           <i>
-            Pola Resik Optima (PRO) adalah mitra terpercaya dalam penyediaan jasa
-            kebersihan terpadu dan pengelolaan tenaga kerja profesional. Kami
-            berkomitmen menciptakan lingkungan yang <strong>bersih</strong>,{" "}
-            <strong>sehat</strong>, dan <strong>produktif</strong>.
+            Pola resik optima berkomitmen memberikan solusi kebersihan terbaik untuk perkantoran,ruko,mall, apartemen , residence dan pabrik
           </i>
         </h3>
 
