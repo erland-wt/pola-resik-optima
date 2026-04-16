@@ -10,6 +10,11 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Pola Resik Optima",
   description: "Pola Resik Optima adalah perusahaan yang bergerak di bidang jasa kebersihan dan sanitasi, menyediakan solusi inovatif untuk menjaga kebersihan dan kesehatan lingkungan Anda.",
+  icons: {
+    icon: [{ url: "/images/Pola Resik Optima Transparant.png", type: "image/png" }],
+    shortcut: ["/images/Pola Resik Optima Transparant.png"],
+    apple: [{ url: "/images/Pola Resik Optima Transparant.png" }],
+  },
 };
 
 export default function RootLayout({

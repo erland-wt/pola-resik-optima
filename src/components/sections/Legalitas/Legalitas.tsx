@@ -17,7 +17,7 @@ const Legalitas = () => {
   } = useLegalitasCards();
 
   return (
-    <div id="Legalitas" className="bg-gray-100 py-16 px-4 sm:px-6 lg:px-16">
+    <div id="Legalitas" className="bg-white py-16 px-4 sm:px-6 lg:px-16">
       <h1 className="text-2xl font-semibold uppercase tracking-widest text-center mt-16 mb-6 text-[#3057B6]">
         Legalitas Perusahaan
       </h1>

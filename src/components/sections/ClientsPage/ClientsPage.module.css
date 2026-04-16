@@ -1,0 +1,140 @@
+.section {
+  /* Mobile first */
+  --row-gap: 0.625rem;
+  --card-gap: 0.625rem;
+  --card-width: clamp(108px, 40vw, 156px);
+  --card-height: clamp(74px, 24vw, 108px);
+  --card-padding: 0.5rem;
+  --scroll-duration: 18s;
+
+  width: 100%;
+}
+
+.title {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #3057b6;
+  text-align: center;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rows {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: var(--row-gap);
+}
+
+.viewport {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+.track {
+  display: flex;
+  gap: var(--card-gap);
+  width: max-content;
+  will-change: transform;
+}
+
+.trackLeft {
+  animation: scrollLeft var(--scroll-duration) linear infinite;
+}
+
+.trackRight {
+  animation: scrollRight var(--scroll-duration) linear infinite;
+}
+
+.card {
+  position: relative;
+  flex: 0 0 var(--card-width);
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: var(--card-padding);
+  border-radius: 0.625rem;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 16px rgba(17, 24, 39, 0.06);
+}
+
+.logo {
+  object-fit: contain;
+}
+
+@keyframes scrollLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* >= 640px */
+@media (min-width: 640px) {
+  .section {
+    --row-gap: 0.75rem;
+    --card-gap: 0.75rem;
+    --card-width: clamp(132px, 26vw, 188px);
+    --card-height: clamp(88px, 16vw, 124px);
+    --card-padding: 0.625rem;
+    --scroll-duration: 21s;
+  }
+
+  .title {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+}
+
+/* >= 768px */
+@media (min-width: 768px) {
+  .section {
+    --row-gap: 0.875rem;
+    --card-gap: 0.875rem;
+    --card-width: clamp(148px, 20vw, 208px);
+    --card-height: clamp(98px, 13vw, 134px);
+    --card-padding: 0.75rem;
+    --scroll-duration: 24s;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* >= 1024px */
+@media (min-width: 1024px) {
+  .section {
+    --card-width: clamp(168px, 16vw, 228px);
+    --card-height: clamp(108px, 10vw, 142px);
+    --scroll-duration: 27s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trackLeft,
+  .trackRight {
+    animation: none;
+  }
+}
