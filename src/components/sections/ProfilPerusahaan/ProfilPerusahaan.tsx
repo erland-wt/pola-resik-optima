@@ -33,6 +33,7 @@ const ProfilPrusahaan = () => {
               alt="Profil Perusahaan"
               width={150}
               height={100}
+              sizes="(max-width: 640px) 112px, (max-width: 768px) 144px, 208px"
               className="w-28 sm:w-36 md:w-44 lg:w-52 h-auto object-contain"
               loading="eager"
             />

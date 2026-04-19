@@ -1,18 +1,19 @@
 "use client";
 
+import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
 import styles from "./LayananUnggulan.module.css";
 import RuangLingkup from "../RuangLingkup";
 import cardsLayanan from "./MenuLayanan";
 
 const LayananUnggulan = () => {
-  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.2, once: true });
+  const { ref, inView } = useInView<HTMLDivElement>({
+    threshold: 0.2,
+    once: true,
+  });
 
   return (
-    <div
-      id="Layanan"
-      className="bg-[url('/images/bg-white.jpg')] bg-cover bg-center text-white py-24 sm:py-32 md:py-40"
-    >
+    <div id="Layanan" className="bg-white text-white py-24 sm:py-32 md:py-40">
       <div
         ref={ref}
         className={styles.section + " " + (inView ? styles.sectionVisible : "")}
@@ -30,9 +31,16 @@ const LayananUnggulan = () => {
           {cardsLayanan.map((card) => (
             <div
               key={card.id}
-              className="relative h-64 sm:h-72 md:h-80 lg:h-96 rounded-xl overflow-hidden shadow-md bg-cover bg-center"
-              style={{ backgroundImage: `url(${card.bg})` }}
+              className="relative h-64 sm:h-72 md:h-80 lg:h-96 rounded-xl overflow-hidden shadow-md"
             >
+              <Image
+                src={card.bg}
+                alt={card.title}
+                fill
+                sizes="(max-width: 768px) 92vw, (max-width: 1280px) 46vw, 560px"
+                className="object-cover"
+              />
+
               <div className="absolute inset-0 bg-black/70" />
 
               <div className="absolute inset-0 flex flex-col items-center justify-center px-5 sm:px-7 text-center">
@@ -47,7 +55,6 @@ const LayananUnggulan = () => {
           ))}
         </div>
 
-        {/* Ruang Lingkup */}
         <div className="w-11/12 md:w-5/6 mx-auto mt-16 md:mt-20">
           <RuangLingkup />
         </div>

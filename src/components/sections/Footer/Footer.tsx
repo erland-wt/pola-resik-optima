@@ -1,7 +1,7 @@
 import NAV_LINKS from "@/components/layout/Navbar/navLinks";
 
 const CONTACT = {
-    address: "jl.Mangunkusumo no.18, rt.01 / rw.10, Kel.Sudimara timur, Kec.Ciledug, Kota Tangerang 15157",
+    address: "Jl. Raya Cipto Mangunkusumo, Kel.Sudimara timur, Kec.Ciledug, Kota Tangerang 15157",
     phoneDisplay: "+62 812-8170-0875",
     phoneRaw: "6281281700875",
     location: {

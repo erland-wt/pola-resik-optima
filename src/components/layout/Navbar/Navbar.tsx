@@ -65,8 +65,8 @@ const Navbar = () => {
               alt="Pola Resik Optima"
               width={60}
               height={100}
+              sizes="(max-width: 768px) 30px, 60px"
               className="w-7.5 md:w-auto md:h-auto object-contain"
-              loading="eager"
             />
             <p className="font-bold text-[10px] md:text-[14px] uppercase tracking-widest">
               Pola Resik Optima
