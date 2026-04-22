@@ -150,6 +150,7 @@ const Navbar = () => {
           <div className="mt-5">
             <Button
               label="Hubungi Kami"
+              onClick={openWhatsApp}
               className="w-full bg-[#3057B6] py-2 px-4 rounded cursor-pointer shadow-lg text-white hover:bg-[#25489E] transition duration-300"
             />
           </div>
